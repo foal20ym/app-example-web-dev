@@ -1,0 +1,187 @@
+.app-shell {
+  min-height: 100vh;
+  background: #f4f0e8;
+  color: #28302b;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #d8d1c4;
+}
+
+.brand {
+  color: #243d32;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-nav a,
+.back-link,
+.card-link {
+  color: #637067;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a.active,
+.back-link:hover,
+.card-link:hover {
+  color: #c4512d;
+}
+
+.page-content {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: left;
+}
+
+.hero-panel,
+.text-panel,
+.post-detail {
+  max-width: 700px;
+}
+
+.hero-panel h1,
+.text-panel h1,
+.post-detail h1,
+.posts-page h1,
+.empty-state h1 {
+  margin: 0.35rem 0 1rem;
+  color: #243d32;
+  font-size: clamp(2.5rem, 7vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.hero-panel > p:not(.eyebrow),
+.text-panel > p:not(.eyebrow),
+.post-detail > p:not(.eyebrow) {
+  max-width: 530px;
+  color: #637067;
+  font-size: 1.15rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #c4512d;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.primary-link {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.9rem 1.15rem;
+  background: #243d32;
+  color: #fffaf1;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primary-link:hover {
+  background: #c4512d;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.post-count {
+  color: #637067;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.post-card {
+  display: flex;
+  min-height: 230px;
+  flex-direction: column;
+  padding: 1.35rem;
+  border: 1px solid #d8d1c4;
+  background: #fffaf1;
+}
+
+.post-card h2 {
+  margin: 0 0 0.5rem;
+  color: #243d32;
+  font-size: 1.35rem;
+}
+
+.post-card p {
+  color: #637067;
+}
+
+.post-card p + p {
+  margin-top: 1rem;
+}
+
+.card-link {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+.post-detail,
+.text-panel {
+  padding-top: 1rem;
+}
+
+.post-detail {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #d8d1c4;
+}
+
+.post-meta {
+  margin-bottom: 2rem;
+  color: #c4512d !important;
+  font-size: 0.9rem !important;
+  font-weight: 800;
+}
+
+.empty-state {
+  padding-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .site-header,
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-header,
+  .page-content {
+    padding: 1.25rem;
+  }
+
+  .page-content {
+    padding-top: 3rem;
+  }
+}
