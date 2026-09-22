@@ -1,11 +1,11 @@
 import type { LoaderFunctionArgs } from "react-router-dom";
 import type { Post } from "../models/Post";
-import { getPosts } from "../services/PostService";
+import { getPost, getPosts } from "../services/PostService";
 
-export function loadPosts(): Post[] {
-  return getPosts()
+export async function loadPosts(): Promise<Post[]> {
+  return await getPosts()
 }
 
-export function loadPost({ params }: LoaderFunctionArgs) {
-  return getPosts().find((post) => post.id === Number(params.postId))
+export async function loadPost({ params }: LoaderFunctionArgs) {
+  return getPost(Number(params.postId))
 }
