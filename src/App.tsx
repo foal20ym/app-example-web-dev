@@ -1,9 +1,10 @@
 import './App.css'
-import { createBrowserRouter, Link, NavLink, Outlet, RouterProvider, useLoaderData } from 'react-router-dom'
-import type { LoaderFunctionArgs } from 'react-router-dom'
-import PostList from './views/PostList'
-import { getPosts } from './services/PostService'
-import type { Post } from './models/Post'
+import { createBrowserRouter, Link, NavLink, Outlet, RouterProvider } from 'react-router-dom'
+import { loadPost, loadPosts } from './controllers/PostController'
+import { About } from './views/About'
+import { Home } from './views/Home'
+import { PostDetails } from './views/PostDetails'
+import { Posts } from './views/Posts'
 
 function RootLayout() {
   return (
@@ -24,74 +25,6 @@ function RootLayout() {
   )
 }
 
-function Home() {
-  return (
-    <section className="hero-panel">
-      <p className="eyebrow">Data mode</p>
-      <h1>Load route data before rendering.</h1>
-      {/* <p>This page uses a loader and a child route with React Router&apos;s data APIs.</p> */}
-
-      <Link className="primary-link" to="/posts">
-        Browse the posts <span aria-hidden="true">-&gt;</span>
-      </Link>
-      
-    </section>
-  )
-}
-
-function Posts() {
-  const posts = useLoaderData() as Post[]
-
-  return (
-    <>
-      <PostList posts={posts} />
-      <Outlet />
-    </>
-  )
-}
-
-function PostDetails() {
-  // const post = useLoaderData() as Post | undefined
-  const post = useLoaderData()
-
-  if (!post) {
-    return (
-      <section className="empty-state">
-        <h1>Post not found</h1>
-        <Link to="/posts">Back to posts</Link>
-      </section>
-    )
-  }
-
-  return (
-    <article className="post-detail">
-      <Link className="back-link" to="/posts">&lt;- All posts</Link>
-      <p className="eyebrow">Post {post.id}</p>
-      <h1>{post.title}</h1>
-      <p className="post-meta">Written by {post.author}</p>
-      <p>{post.content}</p>
-    </article>
-  )
-}
-
-function About() {
-  return (
-    <section className="text-panel">
-      <p className="eyebrow">About this example</p>
-      <h1>Small routes, clear ownership.</h1>
-      <p>The URL, navigation state, and rendered screen are all connected through declarative route definitions.</p>
-    </section>
-  )
-}
-
-function loadPosts() {
-  return getPosts()
-}
-
-function loadPost({ params }: LoaderFunctionArgs) {
-  return getPosts().find((post) => post.id === Number(params.postId))
-}
-
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
@@ -101,9 +34,11 @@ const router = createBrowserRouter([
         path: 'posts',
         element: <Posts />,
         loader: loadPosts,
-        children: [
-          { path: ':postId', element: <PostDetails />, loader: loadPost },
-        ],
+      },
+      { 
+        path: 'posts/:postId', 
+        element: <PostDetails />, 
+        loader: loadPost 
       },
       { path: 'about', element: <About /> },
     ],
